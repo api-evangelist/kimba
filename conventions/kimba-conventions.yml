@@ -1,0 +1,40 @@
+generated: '2026-07-19'
+method: searched
+source: https://kimba.ai/llms.txt
+notes: >-
+  Cross-cutting conventions for agents interacting with the Kimba storefront's
+  Universal Commerce Protocol (UCP) surface, transcribed from the store's published
+  /llms.txt (mirrored at /agents.md). No idempotency-key contract is documented, so
+  no Idempotency pointer is emitted.
+authentication:
+  read: none (unauthenticated storefront browsing)
+  transact: buyer-approved checkout via Shop Pay / card payment handlers
+  customer: Shopify Customer Account API (OIDC) — see authentication/kimba-authentication.yml
+rate_limiting:
+  documented: true
+  scope: per-IP on the MCP endpoint
+  signal: HTTP 429
+  guidance: back off on 429 responses
+buyer_approval:
+  invariant: buyer must approve payment at the moment of checkout completion
+  fallback: route through Shop Pay via https://shop.app/SKILL.md when contemporaneous approval is unavailable
+context_parameters:
+- name: context.address_country
+  purpose: accurate pricing and availability
+- name: context.currency
+  purpose: accurate pricing
+read_only_endpoints:
+- GET /collections/all
+- GET /products/{handle}
+- GET /products/{handle}.json
+- GET /collections/{handle}
+- GET /collections/{handle}/products.json
+- GET /search?q={query}&type=product
+- GET /sitemap.xml
+discovery:
+  agent_docs: [/llms.txt, /agents.md]
+  well_known: [/.well-known/ucp, /.well-known/openid-configuration]
+cross_links:
+  authentication: authentication/kimba-authentication.yml
+  scopes: scopes/kimba-scopes.yml
+  mcp: mcp/kimba-mcp.yml

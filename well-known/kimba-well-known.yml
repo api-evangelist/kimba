@@ -1,0 +1,25 @@
+generated: '2026-07-19'
+method: searched
+source: live probes of https://kimba.ai/.well-known/*
+host: https://kimba.ai
+notes: >-
+  Kimba's storefront runs on Shopify, which publishes the Customer Account API
+  OIDC/OAuth discovery documents and a Universal Commerce Protocol (UCP) merchant
+  profile at the well-known namespace. security.txt, api-catalog and ai-plugin.json
+  are not published.
+documents:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: kimba-openid-configuration.json
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: kimba-oauth-authorization-server.json
+- path: /.well-known/ucp
+  status: 200
+  file: kimba-ucp.json
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404

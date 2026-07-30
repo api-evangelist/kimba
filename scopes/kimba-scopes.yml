@@ -1,0 +1,27 @@
+generated: '2026-07-19'
+method: searched
+source: https://kimba.ai/.well-known/openid-configuration
+docs: https://shopify.dev/docs/api/customer
+notes: >-
+  OAuth scopes advertised by the Shopify Customer Account API OIDC provider backing
+  the Kimba storefront (scopes_supported in the published openid-configuration).
+schemes:
+- name: ShopifyCustomerAccountOIDC
+  source: well-known/kimba-openid-configuration.json
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://shopify.com/authentication/76759498890/oauth/authorize
+    tokenUrl: https://shopify.com/authentication/76759498890/oauth/token
+scopes:
+- scope: openid
+  description: OpenID Connect authentication (subject identifier).
+  flows: [authorizationCode]
+- scope: email
+  description: Access to the customer's email address.
+  flows: [authorizationCode]
+- scope: customer-account-api:full
+  description: Full access to the Shopify Customer Account API for the signed-in buyer.
+  flows: [authorizationCode]
+- scope: customer-account-mcp-api:full
+  description: Full access to the Customer Account MCP API for agent-driven customer operations.
+  flows: [authorizationCode]

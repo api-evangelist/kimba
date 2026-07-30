@@ -1,0 +1,33 @@
+generated: '2026-07-19'
+method: searched
+status: published
+source: https://kimba.ai/llms.txt
+notes: >-
+  Kimba's Shopify storefront implements the Universal Commerce Protocol (UCP) and
+  publishes a hosted MCP endpoint for agent-driven commerce. The endpoint requires
+  a UCP agent-profile discovery handshake (tools/list returns invalid_profile_url
+  without a profile uri), so the tool list below is transcribed from the documented
+  UCP shopping flow in /llms.txt and the standard mcp.openrpc.json schema — not a
+  live tools/list dump.
+server:
+  name: kimba-ucp-shopping
+  vendor: Shopify UCP
+  transport: http
+  url: https://kimba.ai/api/ucp/mcp
+  alt_url: https://kimba-ai.myshopify.com/api/ucp/mcp
+  ucp_version: '2026-04-08'
+  spec: https://ucp.dev/2026-04-08/specification/overview/
+  schema: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  auth: buyer-approved checkout (Shop Pay / card payment handlers); read is unauthenticated
+  rate_limited: per-IP, back off on HTTP 429
+tools:
+- name: search_catalog
+  description: Search the store catalog for products matching a buyer's intent.
+- name: create_cart
+  description: Create a cart and add desired items.
+- name: create_checkout
+  description: Start the purchase flow for a cart.
+- name: update_checkout
+  description: Set shipping address and method on a checkout.
+- name: complete_checkout
+  description: Finalize the checkout; the buyer must approve payment.
