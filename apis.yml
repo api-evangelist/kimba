@@ -1,7 +1,16 @@
 aid: kimba
 name: Kimba
-description: Kimba is a company surfaced as a portfolio company of techstars and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Kimba is an AI-powered sleep technology company building a bedside device that
+  uses personalized scent therapy to improve sleep quality. The device reads
+  biometric data from wearables (Oura, WHOOP, Apple Watch, Garmin), monitors sleep
+  architecture, breathing, movement and disturbances, and releases natural,
+  water-based scent formulations at precise moments in the sleep cycle to enhance
+  rest, reduce nighttime disruptions and support cognitive performance. Kimba is a
+  Techstars-backed direct-to-consumer hardware and subscription brand whose online
+  store runs on Shopify; it exposes an agent-facing commerce surface via the
+  Universal Commerce Protocol (UCP), a hosted MCP endpoint, and Shopify Customer
+  Account API (OIDC) authentication rather than a traditional developer API.
 url: https://raw.githubusercontent.com/api-evangelist/kimba/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,11 +18,31 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://cdn.shopify.com/s/files/1/0767/5949/8890/files/black_logo.svg
 tags:
 - Company
+- Sleep Technology
+- Consumer Hardware
+- Health & Wellness
+- Artificial Intelligence
+- Wearables
+- E-Commerce
+- Agentic Commerce
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -23,3 +52,33 @@ maintainers:
 common:
 - type: Website
   url: https://kimba.ai/
+- type: Blog
+  url: https://kimba.ai/blogs/news
+- type: Support
+  url: https://kimba.ai/pages/contact
+- type: TermsOfService
+  url: https://kimba.ai/policies/terms-of-service
+- type: PrivacyPolicy
+  url: https://kimba.ai/policies/privacy-policy
+- type: SignUp
+  url: https://kimba.ai/account
+- type: MCPServer
+  name: Kimba UCP Shopping MCP
+  url: mcp/kimba-mcp.yml
+- type: WellKnown
+  url: well-known/kimba-well-known.yml
+- type: Authentication
+  url: authentication/kimba-authentication.yml
+- type: OAuthScopes
+  url: scopes/kimba-scopes.yml
+- type: Conventions
+  url: conventions/kimba-conventions.yml
+- type: LLMsTxt
+  url: llms/kimba-llms.txt
+- type: DomainSecurity
+  url: security/kimba-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
