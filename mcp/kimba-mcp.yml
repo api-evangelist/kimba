@@ -2,12 +2,10 @@ generated: '2026-07-19'
 method: searched
 status: published
 source: https://kimba.ai/llms.txt
-notes: >-
-  Kimba's Shopify storefront implements the Universal Commerce Protocol (UCP) and
-  publishes a hosted MCP endpoint for agent-driven commerce. The endpoint requires
-  a UCP agent-profile discovery handshake (tools/list returns invalid_profile_url
-  without a profile uri), so the tool list below is transcribed from the documented
-  UCP shopping flow in /llms.txt and the standard mcp.openrpc.json schema — not a
+notes: Kimba's Shopify storefront implements the Universal Commerce Protocol (UCP) and publishes a hosted
+  MCP endpoint for agent-driven commerce. The endpoint requires a UCP agent-profile discovery handshake
+  (tools/list returns invalid_profile_url without a profile uri), so the tool list below is transcribed
+  from the documented UCP shopping flow in /llms.txt and the standard mcp.openrpc.json schema — not a
   live tools/list dump.
 server:
   name: kimba-ucp-shopping
@@ -31,3 +29,11 @@ tools:
   description: Set shipping address and method on a checkout.
 - name: complete_checkout
   description: Finalize the checkout; the buyer must approve payment.
+deployment:
+  mode: remote
+  endpoint: https://kimba.ai/api/ucp/mcp
+  verified: probed
+  probe: live
+  tools: 13
+  checked: '2026-08-12'
+  source: catalog MCP census
